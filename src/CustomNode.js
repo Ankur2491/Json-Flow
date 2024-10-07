@@ -12,6 +12,7 @@ function CustomNode({ data, isConnectable }) {
     <div className="text-updater-node">
       {/* <NodeResizer minWidth={100} minHeight={10} /> */}
       <Handle
+        className="customHandle"
         type="target"
         position={Position.Left}
         style={handleStyle}
@@ -22,6 +23,7 @@ function CustomNode({ data, isConnectable }) {
       :Object.keys(data.value).map(key=><p style={{color:'#6741d9'}}><small>{key}: <span style={{color:'#000000'}}> {String(data?.value[key])}</span></small></p>)}
       </div>
       <Handle
+        className="customHandle"
         type="source"
         position={Position.Right}
         id="a"
