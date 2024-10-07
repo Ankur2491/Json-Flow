@@ -33,7 +33,6 @@ const elkOptions = {
 };
 
 const getLayoutedElements = (nodes, edges, options = {}) => {
-  console.log("here")
   const isHorizontal = options?.['elk.direction'] === 'RIGHT';
   const graph = {
     id: 'root',
@@ -134,7 +133,7 @@ function App() {
                 <button type="button" className="btn btn-primary btn-sm" onClick={() => onLayout({ direction: 'RIGHT' })}>
                   horizontal layout
                 </button>
-                <button type="button" className="btn btn-primary btn-sm" onClick={() => colorMode === 'dark' ? setColorMode('light') : setColorMode('dark')}>toggle color</button>
+                <button type="button" className="btn btn-secondary btn-sm" onClick={() => colorMode === 'dark' ? setColorMode('light') : setColorMode('dark')}>toggle color</button>
               </Panel>
               <MiniMap />
               <Controls />

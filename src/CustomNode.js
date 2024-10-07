@@ -19,8 +19,8 @@ function CustomNode({ data, isConnectable }) {
         isConnectable={isConnectable}
       />
       <div>
-      { typeof data.value== 'string' || typeof data.value =='number' || typeof data.value =='boolean' ? <p style={{color:'#6741d9'}}><small>{data.value}</small></p>
-      :Object.keys(data.value).map(key=><p style={{color:'#6741d9'}}><small>{key}: <span style={{color:'#000000'}}> {String(data?.value[key])}</span></small></p>)}
+      { typeof data.value== 'string' || typeof data.value =='number' || typeof data.value =='boolean' ? <p key={data.value} style={{color:'#6741d9'}}><small>{data.value}</small></p>
+      :Object.keys(data.value).map(key=><p key={key} style={{color:'#6741d9'}}><small>{key}: <span style={{color:'#000000'}}> {String(data?.value[key])}</span></small></p>)}
       </div>
       <Handle
         className="customHandle"
