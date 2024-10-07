@@ -28,8 +28,8 @@ const elk = new ELK();
 // - https://www.eclipse.org/elk/reference/options.html
 const elkOptions = {
   'elk.algorithm': 'layered',
-  'elk.layered.spacing.nodeNodeBetweenLayers': '200',
-  'elk.spacing.nodeNode': '200',
+  'elk.layered.spacing.nodeNodeBetweenLayers': '700',
+  'elk.spacing.nodeNode': '500',
 };
 
 const getLayoutedElements = (nodes, edges, options = {}) => {
@@ -121,6 +121,9 @@ function App() {
               onNodesChange={onNodesChange}
               onEdgesChange={onEdgesChange}
               nodeTypes={nodeTypes}
+              panOnScroll
+              selectionOnDrag
+              minZoom={0.2}
               fitView
             >
               <Panel position="top-right">
