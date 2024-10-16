@@ -11,6 +11,7 @@
     "axios": "^1.7.7",
     "dagre": "^0.8.5",
     "elkjs": "^0.9.3",
+    "jsonflowutil": "^1.0.3",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-scripts": "5.0.1",

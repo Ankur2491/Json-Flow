@@ -9,7 +9,6 @@ import {
   useNodesState,
   useEdgesState,
   useReactFlow,
-  MiniMap,
   Controls,
   Background,
   BackgroundVariant,
@@ -20,6 +19,7 @@ import { Editor } from '@monaco-editor/react';
 import axios from 'axios';
 
 const elk = new ELK();
+const prepareNodesAndEdges = require('jsonflowutil');
 
 // Elk has a *huge* amount of options to configure. To see everything you can
 // tweak check out:
@@ -101,7 +101,7 @@ function App() {
 
   // Calculate the initial layout on mount.
   useLayoutEffect(() => {
-    onLayout({ direction: 'DOWN', useInitialNodes: true });
+    onLayout({ direction: 'RIGHT', useInitialNodes: true });
   }, [initNodes]);
   const nodeTypes = { textUpdater: CustomNode }
   return (
@@ -126,16 +126,15 @@ function App() {
               fitView
             >
               <Panel position="top-right">
-                <button type="button" className="btn btn-primary btn-sm" onClick={() => {return onLayout({ direction: 'DOWN' })}}>
+                {/* <button type="button" className="btn btn-primary btn-sm" onClick={() => {return onLayout({ direction: 'DOWN' })}}>
                   vertical layout
                 </button>
 
                 <button type="button" className="btn btn-primary btn-sm" onClick={() => onLayout({ direction: 'RIGHT' })}>
                   horizontal layout
-                </button>
+                </button> */}
                 <button type="button" className="btn btn-secondary btn-sm" onClick={() => colorMode === 'dark' ? setColorMode('light') : setColorMode('dark')}>toggle color</button>
               </Panel>
-              <MiniMap />
               <Controls />
               <Background variant={BackgroundVariant.Dots} />
             </ReactFlow>
@@ -148,11 +147,12 @@ function App() {
   async function callFormStructure(jsonRaw) {
     try{
     if(JSON.parse(jsonRaw)){  
-    const reqBody = {
-      jsonPayload: jsonRaw
-    }
-    let res = await axios.post(`https://json-flow-api.vercel.app/formStructure`, {reqBody})
-    let data  = await res.data;
+    // const reqBody = {
+    //   jsonPayload: jsonRaw
+    // }
+    // let res = await axios.post(`http://localhost:4000/formStructure`, {reqBody})
+    // let data  = await res.data;
+    let data = prepareNodesAndEdges(jsonRaw);
     setNodes([])
     setEdges([])
     setInitNodes([])
