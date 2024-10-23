@@ -1,6 +1,7 @@
 import ELK from 'elkjs/lib/elk.bundled.js';
 import React, { useCallback, useEffect, useLayoutEffect, useState } from 'react';
 import CustomNode from './CustomNode';
+import SplitPane, { Pane } from 'react-split-pane';
 import {
   ReactFlow,
   ReactFlowProvider,
@@ -105,12 +106,10 @@ function App() {
   }, [initNodes]);
   const nodeTypes = { textUpdater: CustomNode }
   return (
-    <div className='container-fluid'>
-      <div className='row'>
-        <div className='col-md-5'>
+    <SplitPane split="vertical" defaultSize={500} primary='first'>
+          <div>
           <Editor height={'90vh'} defaultLanguage='json' theme='vs-dark' onChange={(e)=>callFormStructure(e)} />
-        </div>
-        <div className='col-md-7'>
+          </div>
           <div style={{ width: '100%', height: '90vh' }}>
             <ReactFlow
               colorMode={colorMode}
@@ -139,9 +138,7 @@ function App() {
               <Background variant={BackgroundVariant.Dots} />
             </ReactFlow>
           </div>
-        </div>
-      </div>
-    </div>
+        </SplitPane>
   );
 
   async function callFormStructure(jsonRaw) {

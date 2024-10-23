@@ -12,9 +12,18 @@ function ObjectNode(props) {
 
     return (
         <>
-            <Button variant="info" onClick={handleShow} size="sm">
+            {/* <Button variant="info" onClick={handleShow} size="sm">
                 View Object
-            </Button>
+            </Button> */}
+
+            <div onClick={handleShow}>
+                {Object.keys(props['objectValues']['value']).map((key,index)=> index<5 && 
+                <p key={key} style={{color:'#6741d9'}}><small>{key}: <span style={{color:'#000000'}}> {String(props['objectValues']['value'][key])}</span></small></p>)}
+                . . .<br/>
+               <i class="fa fa-plus" aria-hidden="true"></i>(click to view whole json)
+
+            </div>
+
 
             <Modal show={show} onHide={handleClose} scrollable={true}>
                 <Modal.Header closeButton>
