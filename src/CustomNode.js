@@ -1,13 +1,9 @@
-import { useCallback } from 'react';
 import { Handle, Position, NodeResizer } from '@xyflow/react';
+import ObjectNode from './ObjectNode';
 
 const handleStyle = { background: '#fff' };
 
 function CustomNode({ data, isConnectable }) {
-  const onChange = useCallback((evt) => {
-    console.log(evt.target.value);
-  }, []);
-
   return (
     <div className="text-updater-node">
       {/* <NodeResizer minWidth={100} minHeight={10} /> */}
@@ -20,7 +16,7 @@ function CustomNode({ data, isConnectable }) {
       />
       <div>
       { typeof data.value== 'string' || typeof data.value =='number' || typeof data.value =='boolean' ? <p key={data.value} style={{color:'#6741d9'}}><small>{data.value}</small></p>
-      :Object.keys(data.value).map(key=><p key={key} style={{color:'#6741d9'}}><small>{key}: <span style={{color:'#000000'}}> {String(data?.value[key])}</span></small></p>)}
+      :<ObjectNode objectValues={data}></ObjectNode>}
       </div>
       <Handle
         className="customHandle"
