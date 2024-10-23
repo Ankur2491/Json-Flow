@@ -9,10 +9,12 @@
     "@testing-library/user-event": "^13.5.0",
     "@xyflow/react": "^12.3.1",
     "axios": "^1.7.7",
+    "bootstrap": "^5.3.3",
     "dagre": "^0.8.5",
     "elkjs": "^0.9.3",
     "jsonflowutil": "^1.0.3",
     "react": "^18.3.1",
+    "react-bootstrap": "^2.10.5",
     "react-dom": "^18.3.1",
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
