@@ -94,3 +94,6 @@ code {
 .Resizer.disabled:hover {
   border-color: transparent;
 }
+.objNode {
+  cursor: pointer;
+}
